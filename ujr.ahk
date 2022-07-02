@@ -23,6 +23,7 @@ Long-term:
 ; Create an instance of the library
 ADHD := New ADHDLib
 
+ADHD.config_ignore_x64_warning()
 ; Ensure running as admin
 ADHD.run_as_admin()
 
@@ -47,7 +48,7 @@ ADHD.config_about({name: "UJR", version: "6.10", author: "evilC", link: "<a href
 ADHD.config_size(600,500)
 
 ; Configure update notifications:
-ADHD.config_updates("http://evilc.com/files/ahk/vjoy/ujr.au.txt")
+;ADHD.config_updates("http://evilc.com/files/ahk/vjoy/ujr.au.txt")
 
 ; Warn user of incompatible settings file
 ini_version := 2
@@ -85,7 +86,7 @@ if (!ADHD.is_first_run() && ADHD.get_ini_version() != ini_version){
 ADHD.create_gui()
 
 ; Init the PPJoy / vJoy library
-#include <VJoy_lib>
+#include VJoy_lib.ahk
 
 vjoy_id := 0		; The current vjoy device the app is trying to use. Also serves as a "last item selected" for the vjoy id dropdown
 vjoy_ready := 0		; Whether the vjoy_id is connected and under the app's control
@@ -1313,5 +1314,5 @@ auto_configure_buttons(){
 ; FOOTER SECTION
 
 ; KEEP THIS AT THE END!!
-;#Include ADHDLib.ahk		; If you have the library in the same folder as your macro, use this
-#Include <ADHDLib>			; If you have the library in the Lib folder (C:\Program Files\Autohotkey\Lib), use this
+#Include ADHDLib.ahk		; If you have the library in the same folder as your macro, use this
+;#Include <ADHDLib>			; If you have the library in the Lib folder (C:\Program Files\Autohotkey\Lib), use this
